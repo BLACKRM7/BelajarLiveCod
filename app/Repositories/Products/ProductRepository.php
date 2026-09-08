@@ -1,14 +1,14 @@
 <?php
-namespace App\Repositories\Product;
+namespace App\Repositories\Products;
 
 use App\Contracts\Products\ProductRepositoryInterface;
 use App\Models\Product;
 use App\Repositories\BaseRepository;
 
-class ProductRepository extends BaseRepository
+class ProductRepository extends BaseRepository implements ProductRepositoryInterface
 {
-    public function __construct(Product $model) 
+    public function __construct(Product $model)
     {
-        parent::__construct($model);    
+        parent::__construct($model);
     }
 }

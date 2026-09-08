@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\Products\ProductRepositoryInterface;
 use App\Contracts\Users\UserRepositoryInterface;
-use App\Repositories\Product\ProductRepository;
+use App\Repositories\Products\ProductRepository;
 use App\Repositories\Users\UserRepository;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;

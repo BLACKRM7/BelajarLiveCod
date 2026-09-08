@@ -40,21 +40,29 @@ class ProductController extends Controller
         return $this->successResponse(new ProductResource($product), 'Detail produk');
     }
 
-    public function update(UpdateProductRequest $request, int $id)
+    public function update(UpdateProductRequest $request, string $id)
     {
-        $product = $this->productService->getProductById($id);
+        $productId = (int) $id;
+        $product = $this->productService->getProductById($productId);
         if (!$product) {
             return $this->errorResponse('Produk tidak ditemukan', 404);
         }
-        return $this->successResponse(new ProductResource($product), 'Produk berhasil ditambah');
+
+        $updatedProduct = $this->productService->updateProduct($productId, $request->validated());
+
+        return $this->successResponse(new ProductResource($updatedProduct), 'Produk berhasil diubah');
     }
 
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
-        $deleted = $this->productService->getProductById($id);
+        $productId = (int) $id;
+        $deleted = $this->productService->getProductById($productId);
         if (!$deleted) {
             return $this->errorResponse('Produk tidak ditemukan', 404);
         }
+
+        $this->productService->deleteProduct($productId);
+
         return $this->successResponse(null, 'Produk berhasil dihapus');
     }
 }
