@@ -1,5 +1,5 @@
 <?php
-namespace App\Services;
+namespace App\Services\Users;
 
 use App\Contracts\Users\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ class UserService
         $data['password'] = Hash::make($data['password']);
         $user = $this->userRepository->create($data);
 
-        $token = $user->createToken('Personal Access Token')->accessToken;
+        $token = $user->createToken('PassportToken')->accessToken;
 
         return [
             'user' => $user,
@@ -36,7 +36,7 @@ class UserService
 
         /** @var \App\Models\User $user */
         $user = Auth::user();
-        $token = $user->createToken('Personal Access Token')->accessToken;
+        $token = $user->createToken('PassportToken')->accessToken;
 
         return [
             'user' => $user,

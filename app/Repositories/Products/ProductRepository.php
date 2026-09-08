@@ -5,7 +5,7 @@ use App\Contracts\Products\ProductRepositoryInterface;
 use App\Models\Product;
 use App\Repositories\BaseRepository;
 
-class ProductRepository extends BaseRepository implements ProductRepositoryInterface
+class ProductRepository extends BaseRepository
 {
     public function __construct(Product $model) 
     {
