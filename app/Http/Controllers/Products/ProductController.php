@@ -40,7 +40,7 @@ class ProductController extends Controller
         return $this->successResponse(new ProductResource($product), 'Detail produk');
     }
 
-    public function update(UpdateProductRequest $request, string $id)
+    public function update(UpdateProductRequest $request, int $id)
     {
         $productId = (int) $id;
         $product = $this->productService->getProductById($productId);
@@ -53,7 +53,7 @@ class ProductController extends Controller
         return $this->successResponse(new ProductResource($updatedProduct), 'Produk berhasil diubah');
     }
 
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         $productId = (int) $id;
         $deleted = $this->productService->getProductById($productId);
